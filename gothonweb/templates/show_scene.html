@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if scene %}
+  <h1> {{ scene.title }} </h1>
+  <pre>{{ scene.description }}</pre>
+  {% if scene.urlname == "death" or scene.urlname == "the_end_winner" or scene.urlname == "the_end_loser" %}
+    <p><a href="/">Play Again?</a></p>
+    {% if scene.urlname == "the_end_winner" %}
+    <marquee behavior="scroll" direction="right" scrollamount="13"> <font color="pink"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="14"><font color="red"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="15"<font color="orange"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="17"><font color="yellow"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="19"><font color="green"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="21"><font color="torquoise"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="23"><font color="indigo"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="25"><font color="violet"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="25"><font color="violet"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="23"><font color="indigo"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="21"><font color="torquoise"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="19"><font color="green"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="17"><font color="yellow"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="15"><font color="orange"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="14"><font color="red"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="13"> <font color="pink"> ---WINNER--- </font></marquee>
+    <br>
+    <marquee behavior="scroll" direction="left" scrollamount="13"> <font color="pink"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="14"><font color="red"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="15"<font color="orange"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="17"><font color="yellow"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="19"><font color="green"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="21"><font color="torquoise"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="23"><font color="indigo"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="25"><font color="violet"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="25"><font color="violet"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="23"><font color="indigo"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="21"><font color="torquoise"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="19"><font color="green"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="17"><font color="yellow"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="15"><font color="orange"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="14"><font color="red"> ---WINNER--- </font></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="13"> <font color="pink"> ---WINNER--- </font></marquee>
+    {% endif %}
+  {% else %}
+    <p>
+      <form action="/game" method="POST">
+        What do you do?
+        <input type="text" name="userinput">
+        <input type="SUBMIT">
+        <input type="RESET">
+      </form>
+    </p>
+    <b>Your options are:
+      <em>
+        <br>
+        {% for key in scene.paths %}
+          {{key}}<br>
+        {% endfor %}
+      </em>
+    </b>
+
+    {% if scene.count > 1 %}
+    <br>
+      <marquee SCROLLAMOUNT=15 direction="down" width="600" height="38" behavior="alternate" style="border:solid" bgcolor="red">
+        <marquee behavior="alternate">SUMBIT something! -> you have been here {{scene.count}} times!!</marquee>
+        <marquee behavior="alternate">SUMBIT something! -> you have been here {{scene.count}} times!!</marquee>
+        <marquee behavior="alternate">SUMBIT something! -> you have been here {{scene.count}} times!!</marquee>
+      </marquee>
+      <marquee SCROLLAMOUNT=15 direction="down" width="600" height="38" behavior="alternate" style="border:solid" bgcolor="red">
+        <marquee behavior="alternate">SUMBIT something! -> you have been here {{scene.count}} times!!</marquee>
+        <marquee behavior="alternate">SUMBIT something! -> you have been here {{scene.count}} times!!</marquee>
+        <marquee behavior="alternate">SUMBIT something! -> you have been here {{scene.count}} times!!</marquee>
+      </marquee>
+
+    {% elif scene.count == 1 %}
+      <p>----you are in this scene for the <b>1st</b> time----</p>
+    {% endif %}
+    <br>
+    <br>
+    <marquee SCROLLAMOUNT=10 direction="down" width="200" height="500" behavior="alternate" style="border:solid" bgcolor="black">
+      <marquee behavior="alternate" scrollamount="13"> <font color="pink">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="14"> <font color="red">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="15"> <font color="orange">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="17"> <font color="yellow">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="19"> <font color="green">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="21"> <font color="torquoise">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="23"> <font color="indigo">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="25"> <font color="violet">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="23"> <font color="indigo">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="21"> <font color="torquoise">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="19"> <font color="green">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="17"> <font color="yellow">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="15"> <font color="orange">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="14"> <font color="red">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="13"> <font color="pink">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="13"> <font color="pink">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="14"> <font color="red">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="15"> <font color="orange">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="17"> <font color="yellow">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="19"> <font color="green">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="21"> <font color="torquoise">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="23"> <font color="indigo">{{scene.title}}</font></marquee>
+      <marquee behavior="alternate" scrollamount="25"> <font color="violet">{{scene.title}}</font></marquee>
+    </marquee>
+
+  {% endif %}
+
+{% else %}
+  <p><a href="/">Start at the Beginning</a></p>
+{% endif %}
+{% endblock %}

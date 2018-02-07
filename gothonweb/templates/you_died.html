@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 style="color:red;">You Died!</h1>
+<p>Looks like you bit the dust.</p>
+<p><a href="/">Play Again?</a></p>
+{% if scene %}
+<marquee behavior="scroll" direction="up" scrollamount="53"> <font color="white"> ---LOSER--- </font></marquee>
+{% endif %}
+{% endblock %}
